@@ -6,11 +6,15 @@ import "errors"
 
 type QuickFind struct {
 	unionFind
-	unionFindInterface
+	UnionFindInterface
 }
 
-func (q QuickFind) Initialize(capacity int) {
-	q.elementsIDs = GetInitializedSlice(capacity)
+func NewQuickFind(capacity int) UnionFindInterface {
+	quickFind := QuickFind{}
+
+	quickFind.elementsIDs = GetElementsIDsSlice(capacity)
+
+	return &quickFind
 }
 
 func (q QuickFind) AreConnected(elementIndex1, elementIndex2 int) bool {
